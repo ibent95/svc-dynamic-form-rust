@@ -1,0 +1,4 @@
+
+/storages/*
+/target
+.env
