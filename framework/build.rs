@@ -5,6 +5,7 @@ fn main() {
     rerun_if_changed_recursive("src/controllers");
 
     generate_basic_mod_rs("src/controllers");
+    generate_basic_mod_rs("src/enums");
     generate_basic_mod_rs("src/middlewares");
     generate_basic_mod_rs("src/models");
     generate_basic_mod_rs("src/repositories");
@@ -184,7 +185,7 @@ fn generate_routes_rs() {
 
         if imported_funcs.insert(alias.clone()) {
             import_lines.push(format!(
-                "use svc_dynamic_form_rust::controllers::{}::{} as {};",
+                "use svc::controllers::{}::{} as {};",
                 module,
                 name,
                 alias
@@ -201,7 +202,7 @@ fn generate_routes_rs() {
         .collect();
 
     // Hapus semua import controller lama sebelum menyisipkan yang baru
-    lines.retain(|line| !line.trim_start().starts_with("use svc_dynamic_form_rust::controllers::"));
+    lines.retain(|line| !line.trim_start().starts_with("use svc::controllers::"));
 
     // Sisipkan import setelah import actix_web
     let import_marker = "use actix_web::{";

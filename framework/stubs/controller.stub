@@ -1,0 +1,36 @@
+use actix_web::{route, HttpRequest, HttpResponse};
+
+#[route("/{{name}}", method = "GET")]
+pub async fn index(request: HttpRequest) -> HttpResponse {
+    HttpResponse::Ok().json(serde_json::json!({
+        "message": "{{NamePascal}} controller for index is working."
+    }))
+}
+
+#[route("/{{name}}/details", method = "GET")]
+pub async fn details(request: HttpRequest) -> HttpResponse {
+    HttpResponse::Ok().json(serde_json::json!({
+        "message": "{{NamePascal}} controller for details is working."
+    }))
+}
+
+#[route("/{{name}}", method = "POST")]
+pub async fn create(request: HttpRequest) -> HttpResponse {
+    HttpResponse::Ok().json(serde_json::json!({
+        "message": "{{NamePascal}} controller for create is working."
+    }))
+}
+
+#[route("/{{name}}", method = "PUT")]
+pub async fn update(request: HttpRequest) -> HttpResponse {
+    HttpResponse::Ok().json(serde_json::json!({
+        "message": "{{NamePascal}} controller for update is working."
+    }))
+}
+
+#[route("/{{name}}", method = "DELETE")]
+pub async fn delete(request: HttpRequest) -> HttpResponse {
+    HttpResponse::Ok().json(serde_json::json!({
+        "message": "{{NamePascal}} controller for delete is working."
+    }))
+}

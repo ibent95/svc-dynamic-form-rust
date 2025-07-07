@@ -1,0 +1,6 @@
+pub async fn run() {
+
+    // Please code the command logic below
+    println!("🔧 Running {name} command...");
+
+}

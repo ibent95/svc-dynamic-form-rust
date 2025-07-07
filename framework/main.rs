@@ -8,7 +8,7 @@ mod models;
 mod repositories;
 mod services;
 
-use actix_web::{App, HttpServer};
+use actix_web::{web, App, HttpServer};
 use clap::Parser;
 use dotenvy::dotenv;
 use env_logger;
@@ -54,7 +54,11 @@ async fn main() -> std::io::Result<()> {
             HttpServer::new(move || {
                 App::new()
                     .app_data(actix_web::web::Data::new(db.clone()))
-                    .configure(configs::routes::config)
+                    .configure(configs::routes::web_config) // Web routes (Default)
+                    .service( // API routes
+                        web::scope("/public/api/v1")
+                            .configure(configs::routes::api_config)
+                    )
             })
             .bind((url, port.parse().unwrap()))?
             .run()
