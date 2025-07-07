@@ -2,9 +2,15 @@
 name = "svc-dynamic-form-rust"
 version = "0.1.0"
 edition = "2024"
+build = "framework/build.rs"
+
+[[bin]]
+name = "svc-dynamic-form-rust"
+path = "framework/main.rs"
 
 [dependencies]
 actix-web = "4.11.0"
+clap = { version = "4.5.3", features = ["derive"] }
 dotenvy = "0.15.7"
 env_logger = "0.11.8"
 log = "0.4.27"

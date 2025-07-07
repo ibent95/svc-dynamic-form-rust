@@ -1,4 +1,3 @@
-
 use log::{error, info, warn};
 
 pub fn logger() {
